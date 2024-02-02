@@ -1,5 +1,5 @@
 // The Swift Programming Language
-// https://docs.swift.org/swift-book
+
 public struct MyLibrary{
     var text = "Hello, World"
     
@@ -8,6 +8,6 @@ public struct MyLibrary{
     }
     
     public func HelloToYou() -> String{
-        return HelloToYou()
+        return "hello to you"
     }
 }
