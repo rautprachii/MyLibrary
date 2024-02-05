@@ -7,13 +7,7 @@ public class MySDKViewController: UIViewController {
     public var onDataReturn: ((String) -> Void)?
     public var onClose: (() -> Void)?
 
-    private let dataLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
+   
     public override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -28,12 +22,7 @@ public class MySDKViewController: UIViewController {
         view.addSubview(goBackButton)
         
         
-        let infoLabel = UILabel()
-              infoLabel.text = "Additional Information"
-              infoLabel.textAlignment = .center
-              infoLabel.translatesAutoresizingMaskIntoConstraints = false
-              view.addSubview(infoLabel)
-        
+       
         
 //        goBackButton.translatesAutoresizingMaskIntoConstraints = false
 //        goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -43,10 +32,6 @@ public class MySDKViewController: UIViewController {
                    goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                    goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
-                   dataLabel.topAnchor.constraint(equalTo: goBackButton.bottomAnchor, constant: 20),
-                   dataLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                   dataLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                   dataLabel.heightAnchor.constraint(equalToConstant: 40)
                ])
     }
 
