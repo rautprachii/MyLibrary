@@ -10,22 +10,31 @@ public class MySDKViewController: UIViewController {
     
     private let textView: UITextView = {
            let textView = UITextView()
-        textView.backgroundColor = .red
+        textView.backgroundColor = .yellow
            textView.translatesAutoresizingMaskIntoConstraints = false
            textView.isEditable = false
            return textView
        }()
+  
+    // Add a property to store the initial data
+       private var initialData: String?
     
+    
+    // Modify the initializer to accept initial data
+       public convenience init(initialData: String) {
+           self.init()
+           self.initialData = initialData
+       }
+   
    
     public override func viewDidLoad() {
-        
         super.viewDidLoad()
-
+        // Display the initial data in the UITextView
+               if let initialData = initialData {
+                   textView.text = initialData
+               }
         view.backgroundColor = .white
 
-       
-        
-        
         let goBackButton = UIButton(type: .system)
         goBackButton.setTitle("Go Back", for: .normal)
         goBackButton.addTarget(self, action: #selector(goBackButtonTapped), for: .touchUpInside)
@@ -67,12 +76,14 @@ public class MySDKViewController: UIViewController {
         onClose?() // Notify the host application upon dismissal
         dismiss(animated: true, completion: nil)
     }
+    
+    
 
-    public func updateDataLabel(withData data: String) {
-        // Update label with received data
-       // dataLabel.text = data
-        textView.text = data
-        print(data)
-    }
+//    public func updateDataLabel(withData data: String) {
+//        // Update label with received data
+//       // dataLabel.text = data
+//        textView.text = data
+//        print(data)
+//    }
 }
 
