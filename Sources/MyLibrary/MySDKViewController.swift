@@ -7,28 +7,38 @@ public class MySDKViewController: UIViewController {
     public var onDataReturn: ((String) -> Void)?
     public var onClose: (() -> Void)?
 
-    private let dataLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+//    private let dataLabel: UILabel = {
+//        let label = UILabel()
+//        label.textAlignment = .center
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
 
     public override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         view.backgroundColor = .white
 
+        
+
+        
         let goBackButton = UIButton(type: .system)
         goBackButton.setTitle("Go Back", for: .normal)
         goBackButton.addTarget(self, action: #selector(goBackButtonTapped), for: .touchUpInside)
 
-     //   view.addSubview(goBackButton)
-        view.addSubview(dataLabel)
+        view.addSubview(goBackButton)
         
-        dataLabel.translatesAutoresizingMaskIntoConstraints = false
-        dataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        dataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        goBackButton.translatesAutoresizingMaskIntoConstraints = false
+        goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+//        view.addSubview(dataLabel)
+//        
+//        dataLabel.translatesAutoresizingMaskIntoConstraints = false
+//        dataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        dataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
 //        NSLayoutConstraint.activate([
 //           goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -50,7 +60,7 @@ public class MySDKViewController: UIViewController {
 
     public func updateDataLabel(withData data: String) {
         // Update label with received data
-        dataLabel.text = data
+       // dataLabel.text = data
     }
 }
 
