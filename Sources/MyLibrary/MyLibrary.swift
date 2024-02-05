@@ -3,12 +3,12 @@
 import UIKit
 
 public class MyLibrary {
-    // Singleton instance
+  
     public static let shared = MyLibrary()
 
     private init() {}
 
-    // Closure to handle data returned from the SDK
+    
     public var onDataReturn: ((String) -> Void)?
 
     // Present the SDK view controller
@@ -25,20 +25,18 @@ public class MyLibrary {
         viewController.present(sdkViewController, animated: true, completion: nil)
     }
 
-    // Handle data returned from the SDK
+    // show toast msg
     private func handleDataFromSDK(_ data: String) {
-        // Process the data returned from the SDK (e.g., show a toast message)
-        print("Data received in host application: \(data)")
+        print("Data received in application: \(data)")
         showToast(message: data)
     }
 
-    // Handle SDK closure
+    
     private func handleSDKClosure() {
-        // Perform any cleanup or additional actions when the SDK is closed
         print("SDK closed")
     }
 
-    // Helper function to show a simple toast message
+  
     private func showToast(message: String) {
         let toastLabel = UILabel()
         toastLabel.text = message
