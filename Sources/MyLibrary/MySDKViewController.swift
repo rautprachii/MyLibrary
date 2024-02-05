@@ -24,15 +24,13 @@ public class MySDKViewController: UIViewController {
         
        
         
-//        goBackButton.translatesAutoresizingMaskIntoConstraints = false
-//        goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        goBackButton.translatesAutoresizingMaskIntoConstraints = false
+        goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
-        NSLayoutConstraint.activate([
-                   goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                   goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-
-               ])
+        
+                 
+               
     }
 
     @objc private func goBackButtonTapped() {
