@@ -20,6 +20,12 @@ public class MySDKViewController: UIViewController {
         return label
     }()
 
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("SDK View Controller appeared")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
 
