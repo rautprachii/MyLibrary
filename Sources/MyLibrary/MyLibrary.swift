@@ -5,6 +5,8 @@ import UIKit
 public class MyLibrary {
   
     public static let shared = MyLibrary()
+    
+    public var sdkViewController: MySDKViewController?
 
     private init() {}
 
@@ -15,11 +17,11 @@ public class MyLibrary {
     public func presentSDK(from viewController: UIViewController) {
         let sdkViewController = MySDKViewController()
         sdkViewController.onDataReturn = { [weak self] data in
-            // Handle data returned from SDK in the host application
+          
             self?.handleDataFromSDK(data)
         }
         sdkViewController.onClose = { [weak self] in
-            // Handle SDK closure
+            
             self?.handleSDKClosure()
         }
         viewController.present(sdkViewController, animated: true, completion: nil)
