@@ -72,6 +72,7 @@ public class MySDKViewController: UIViewController {
         // Update label with received data
        // dataLabel.text = data
         textView.text = data
+        print(data)
     }
 }
 
