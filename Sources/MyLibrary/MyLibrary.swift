@@ -15,24 +15,36 @@
 
 // MySDK.swift
 
+// MyLibrary.swift
+
 import UIKit
 
 public class MyLibrary {
-
-    // Singleton instance
     public static let shared = MyLibrary()
-
-    // Closure to handle data return
-    public var onDataReturn: ((String) -> Void)?
 
     private init() {}
 
-    // Function to present the SDK UI
     public func presentSDK(from viewController: UIViewController) {
+        guard let topViewController = UIApplication.shared.keyWindow?.rootViewController else {
+            return
+        }
+
         let sdkViewController = MySDKViewController()
         sdkViewController.onDataReturn = { [weak self] data in
-            self?.onDataReturn?(data)
+            self?.handleDataFromSDK(data)
         }
-        viewController.present(sdkViewController, animated: true, completion: nil)
+
+        topViewController.present(sdkViewController, animated: true, completion: nil)
+    }
+
+    private func handleDataFromSDK(_ data: String) {
+        // Process data received from SDK
+        print("Data received in host application: \(data)")
+        showToast(message: data)
+    }
+
+    private func showToast(message: String) {
+        // Show a toast message in the host application
+        // ...
     }
 }
