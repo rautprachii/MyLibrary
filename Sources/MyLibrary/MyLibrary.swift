@@ -8,6 +8,6 @@ public struct MyLibrary{
     }
     
     public func HelloToYou() -> String{
-        return "hello to you"
+        return text
     }
 }
