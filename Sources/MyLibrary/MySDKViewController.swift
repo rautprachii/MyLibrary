@@ -10,6 +10,7 @@ public class MySDKViewController: UIViewController {
     
     private let textView: UITextView = {
            let textView = UITextView()
+        textView.backgroundColor = .red
            textView.translatesAutoresizingMaskIntoConstraints = false
            textView.isEditable = false
            return textView
