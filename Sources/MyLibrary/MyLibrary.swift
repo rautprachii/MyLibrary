@@ -35,6 +35,6 @@ public struct MyLibrary {
 
     public func goBack(completion: @escaping (String) -> Void) {
         let sendData = "Hello"
-        completion("$\(sendData) World")
+        completion("\(sendData) World")
     }
 }
