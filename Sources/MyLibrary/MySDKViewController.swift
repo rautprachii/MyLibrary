@@ -23,7 +23,7 @@ public class MySDKViewController: UIViewController {
 
     @objc private func closeButtonTapped() {
         // Send data back to the host application
-        onDataReturn?("Hello")
+        onDataReturn?("World")
 
         // Dismiss the SDK
         dismiss(animated: true, completion: nil)
