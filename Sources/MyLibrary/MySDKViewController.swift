@@ -23,18 +23,22 @@ public class MySDKViewController: UIViewController {
         goBackButton.setTitle("Go Back", for: .normal)
         goBackButton.addTarget(self, action: #selector(goBackButtonTapped), for: .touchUpInside)
 
-        view.addSubview(goBackButton)
+     //   view.addSubview(goBackButton)
         view.addSubview(dataLabel)
+        
+        dataLabel.translatesAutoresizingMaskIntoConstraints = false
+        dataLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        dataLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
 
-        NSLayoutConstraint.activate([
-            goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 50),
-
-            dataLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            dataLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            dataLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            dataLabel.heightAnchor.constraint(equalToConstant: 40)
-        ])
+//        NSLayoutConstraint.activate([
+//           goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 50),
+//
+//            dataLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+//            dataLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+//            dataLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+//            dataLabel.heightAnchor.constraint(equalToConstant: 40)
+//        ])
     }
 
     @objc private func goBackButtonTapped() {
