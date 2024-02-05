@@ -1,54 +1,3 @@
- //The Swift Programming Language
-
-//public struct MyLibrary{
-//    var text = "Hello, World"
-//    
-//    public init(){
-//        
-//    }
-//    
-//    public func HelloToYou() -> String{
-//        return text
-//    }
-//}
-
-
-// MySDK.swift
-
-// MyLibrary.swift
-
-//import UIKit
-//
-//public class MyLibrary {
-//    public static let shared = MyLibrary()
-//
-//    private init() {}
-//
-//    public func presentSDK(from viewController: UIViewController) {
-//        guard let topViewController = UIApplication.shared.keyWindow?.rootViewController else {
-//            return
-//        }
-//
-//        let sdkViewController = MySDKViewController()
-//        sdkViewController.onDataReturn = { [weak self] data in
-//            self?.handleDataFromSDK(data)
-//        }
-//
-//        topViewController.present(sdkViewController, animated: true, completion: nil)
-//    }
-//
-//    private func handleDataFromSDK(_ data: String) {
-//        // Process data received from SDK
-//        print("Data received in host application: \(data)")
-//        showToast(message: data)
-//    }
-//
-//    private func showToast(message: String) {
-//        // Show a toast message in the host application
-//        // ...
-//    }
-//}
-
 // MyLibrary.swift
 
 import UIKit
@@ -64,16 +13,16 @@ public class MyLibrary {
 
     // Present the SDK view controller
     public func presentSDK(from viewController: UIViewController) {
-        guard let topViewController = UIApplication.shared.keyWindow?.rootViewController else {
-            return
-        }
-
         let sdkViewController = MySDKViewController()
         sdkViewController.onDataReturn = { [weak self] data in
             // Handle data returned from SDK in the host application
             self?.handleDataFromSDK(data)
         }
-        topViewController.present(sdkViewController, animated: true, completion: nil)
+        sdkViewController.onClose = { [weak self] in
+            // Handle SDK closure
+            self?.handleSDKClosure()
+        }
+        viewController.present(sdkViewController, animated: true, completion: nil)
     }
 
     // Handle data returned from the SDK
@@ -83,17 +32,39 @@ public class MyLibrary {
         showToast(message: data)
     }
 
-    // Dismiss the SDK view controller
-    public func dismissSDK() {
-        // Dismiss the topmost view controller if it is presented modally
-        if let topViewController = UIApplication.shared.keyWindow?.rootViewController,
-           let presentedViewController = topViewController.presentedViewController {
-            presentedViewController.dismiss(animated: true, completion: nil)
-        }
+    // Handle SDK closure
+    private func handleSDKClosure() {
+        // Perform any cleanup or additional actions when the SDK is closed
+        print("SDK closed")
     }
 
     // Helper function to show a simple toast message
     private func showToast(message: String) {
-        // ... (unchanged)
+        let toastLabel = UILabel()
+        toastLabel.text = message
+        toastLabel.textColor = .white
+        toastLabel.textAlignment = .center
+        toastLabel.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        toastLabel.layer.cornerRadius = 10
+        toastLabel.clipsToBounds = true
+
+        if let topViewController = UIApplication.shared.keyWindow?.rootViewController {
+            topViewController.view.addSubview(toastLabel)
+
+            toastLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                toastLabel.leadingAnchor.constraint(equalTo: topViewController.view.leadingAnchor, constant: 20),
+                toastLabel.trailingAnchor.constraint(equalTo: topViewController.view.trailingAnchor, constant: -20),
+                toastLabel.bottomAnchor.constraint(equalTo: topViewController.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+                toastLabel.heightAnchor.constraint(equalToConstant: 40)
+            ])
+
+            UIView.animate(withDuration: 2.0, delay: 0.1, options: .curveEaseOut, animations: {
+                toastLabel.alpha = 0.0
+            }, completion: { _ in
+                toastLabel.removeFromSuperview()
+            })
+        }
     }
 }
+
