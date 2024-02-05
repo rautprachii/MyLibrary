@@ -43,10 +43,10 @@ public class MySDKViewController: UIViewController {
                    goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                    goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
-                   infoLabel.topAnchor.constraint(equalTo: goBackButton.bottomAnchor, constant: 20),
-                   infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                   infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                   infoLabel.heightAnchor.constraint(equalToConstant: 40)
+                   dataLabel.topAnchor.constraint(equalTo: goBackButton.bottomAnchor, constant: 20),
+                   dataLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                   dataLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                   dataLabel.heightAnchor.constraint(equalToConstant: 40)
                ])
     }
 
