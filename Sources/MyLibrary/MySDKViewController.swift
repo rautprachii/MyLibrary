@@ -44,7 +44,7 @@ public class MySDKViewController: UIViewController {
 
     public func updateDataLabel(withData data: String) {
         // Update label with received data
-        dataLabel.text = data
+       // dataLabel.text = data
     }
 }
 
