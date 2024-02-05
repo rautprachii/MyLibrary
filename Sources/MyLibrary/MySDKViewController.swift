@@ -28,6 +28,7 @@ public class MySDKViewController: UIViewController {
 
         let openSDKButton = UIButton(type: .system)
         openSDKButton.setTitle("Open SDK", for: .normal)
+        openSDKButton.backgroundColor = UIColor.black
         openSDKButton.addTarget(self, action: #selector(openSDKButtonTapped), for: .touchUpInside)
 
         let goBackButton = UIButton(type: .system)
