@@ -40,10 +40,10 @@ import UIKit
 
 
 
-public class MySDK {
+public class MyLibrary {
 
     // Singleton instance
-    public static let shared = MySDK()
+    public static let shared = MyLibrary()
 
     // Closure to handle data return
     public var onDataReturn: ((String) -> Void)?
