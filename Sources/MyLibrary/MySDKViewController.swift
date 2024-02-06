@@ -103,12 +103,12 @@ public class MySDKViewController: UIViewController {
     
     
 
-//    public func updateDataLabel(withData data: String) {
-//        // Update label with received data
-//       // dataLabel.text = data
-//        label.text = data
-//        print(data)
-//    }
+    public func updateDataLabel(withData data: String) {
+        // Update label with received data
+       // dataLabel.text = data
+        label.text = data
+        print(data)
+    }
     
 //    func handleDataReturn(data: String) {
 //           onDataReturn?(data)
