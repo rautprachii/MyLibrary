@@ -6,6 +6,8 @@ public class MySDKViewController: UIViewController {
 
     public var onDataReturn: ((String) -> Void)?
     public var onClose: (() -> Void)?
+    var initialData: String?
+
 
     
     private let textView: UITextView = {
@@ -16,22 +18,32 @@ public class MySDKViewController: UIViewController {
            return textView
        }()
   
+    
+   
+    convenience init(initialData: String?) {
+           self.init(nibName: "MySDKViewController", bundle: nil)
+           self.initialData = initialData
+       }
+    
+    
    
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        textView.text = initialData
+        
         view.backgroundColor = .white
 
         let goBackButton = UIButton(type: .system)
         goBackButton.setTitle("Go Back", for: .normal)
         goBackButton.addTarget(self, action: #selector(goBackButtonTapped), for: .touchUpInside)
 
-//        view.addSubview(goBackButton)
+
        
                 view.addSubview(textView)
                 view.addSubview(goBackButton)
         
-        // Set up UITextView constraints
+      
                NSLayoutConstraint.activate([
                    textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
                    textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -39,7 +51,7 @@ public class MySDKViewController: UIViewController {
                    textView.heightAnchor.constraint(equalToConstant: 100)
                ])
         
-        // Set up Go Back button constraints
+       
                goBackButton.translatesAutoresizingMaskIntoConstraints = false
                NSLayoutConstraint.activate([
                    goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -58,7 +70,6 @@ public class MySDKViewController: UIViewController {
     }
 
     @objc private func goBackButtonTapped() {
-        // Send modified data back to host application
         onDataReturn?("Hello World")
         onClose?() // Notify the host application upon dismissal
         dismiss(animated: true, completion: nil)
