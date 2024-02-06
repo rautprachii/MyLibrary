@@ -12,7 +12,7 @@ public class MySDKViewController: UIViewController {
     
     private let textView: UITextView = {
            let textView = UITextView()
-        textView.backgroundColor = .yellow
+        textView.backgroundColor = .white
            textView.translatesAutoresizingMaskIntoConstraints = false
            textView.isEditable = false
            return textView
@@ -71,7 +71,8 @@ public class MySDKViewController: UIViewController {
     
     
     public func setText(_ text: String) {
-        //textView.text = text
+        textView.attributedText = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        textView.text = text
         print(text)
     }
     
