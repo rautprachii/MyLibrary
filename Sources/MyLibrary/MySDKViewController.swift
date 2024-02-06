@@ -19,6 +19,10 @@ public class MySDKViewController: UIViewController {
        }()
   
     
+    public static func printText(_ text: String) {
+            print("Text from application: \(text)")
+        }
+    
    
 //    convenience init(initialData: String?) {
 //           self.init(nibName: "MySDKViewController", bundle: nil)
