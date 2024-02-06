@@ -71,7 +71,8 @@ public class MySDKViewController: UIViewController {
     
     
     public func setText(_ text: String) {
-        textView.text = text
+        //textView.text = text
+        print(text)
     }
     
 //    public static func printText(_ text: String) {
