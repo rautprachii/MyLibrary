@@ -3,51 +3,37 @@
 import UIKit
 
 public class MyLibrary {
-    
-    
-//    var text = "Hello world"
-//    
-//    public func HelloToYou() -> String{
-//        return "helloToYou"
-//    }
-    
-    
-  
+
     public static let shared = MyLibrary()
-    
     public var sdkViewController: MySDKViewController?
 
     private init() {}
 
-    
     public var onDataReturn: ((String) -> Void)?
 
-    // Present the SDK view controller
-    public func presentSDK(from viewController: UIViewController) {
-        let sdkViewController = MySDKViewController()
-        sdkViewController.onDataReturn = { [weak self] data in
-          
-            self?.handleDataFromSDK(data)
+    // Present the SDK view controller with initial data
+    public func presentSDK(from viewController: UIViewController, withData data: String) {
+        let sdkViewController = MySDKViewController.shared
+        sdkViewController.setText(data) // Set the data in the SDK
+        sdkViewController.onDataReturn = { [weak self] receivedData in
+            self?.handleDataFromSDK(receivedData)
         }
         sdkViewController.onClose = { [weak self] in
-            
             self?.handleSDKClosure()
         }
         viewController.present(sdkViewController, animated: true, completion: nil)
     }
 
-    // show toast msg
+    // Show toast message in the application
     private func handleDataFromSDK(_ data: String) {
         print("Data received in application: \(data)")
         showToast(message: data)
     }
 
-    
     private func handleSDKClosure() {
         print("SDK closed")
     }
 
-  
     private func showToast(message: String) {
         let toastLabel = UILabel()
         toastLabel.text = message
