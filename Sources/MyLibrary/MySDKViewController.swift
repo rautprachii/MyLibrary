@@ -7,7 +7,7 @@ public class MySDKViewController: UIViewController {
     public var onDataReturn: ((String) -> Void)?
     public var onClose: (() -> Void)?
   //  var initialData: String?
-    @IBOutlet weak var sdkLabel: UILabel!
+    
 
     
     private let textView: UITextView = {
@@ -71,7 +71,7 @@ public class MySDKViewController: UIViewController {
     
     
     public func setText(_ text: String) {
-        sdkLabel.text = text
+        textView.text = text
     }
     
 //    public static func printText(_ text: String) {
