@@ -30,6 +30,7 @@ public class MyLibrary {
         showToast(message: data)
     }
 
+    
     private func handleSDKClosure() {
         print("SDK closed")
     }

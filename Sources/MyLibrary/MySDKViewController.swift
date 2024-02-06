@@ -95,10 +95,17 @@ public class MySDKViewController: UIViewController {
     
 
     @objc private func goBackButtonTapped() {
+//        let textToPass = MySDKViewController.shared.getText()
+//           onDataReturn?("Hello World")
+//        onClose?()
+//        dismiss(animated: true, completion: nil)
+        
         let textToPass = MySDKViewController.shared.getText()
-           onDataReturn?("Hello World")
-        onClose?()
-        dismiss(animated: true, completion: nil)
+            let updatedText = textToPass + " World" 
+            onDataReturn?(updatedText)
+            onClose?()
+            dismiss(animated: true, completion: nil)
+        
     }
     
     
