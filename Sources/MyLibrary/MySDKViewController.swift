@@ -83,5 +83,10 @@ public class MySDKViewController: UIViewController {
         textView.text = data
         print(data)
     }
+    
+    func handleDataReturn(data: String) {
+           onDataReturn?(data)
+       }
+    
 }
 
