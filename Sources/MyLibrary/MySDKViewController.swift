@@ -29,6 +29,12 @@ public class MySDKViewController: UIViewController {
         super.viewDidLoad()
 //        textView.text = initialData
         setText(textView.text)
+        
+         func setText(_ text: String) {
+            textView.text = text
+            print("text is\(text)")
+        }
+        
         view.backgroundColor = .white
 
         let goBackButton = UIButton(type: .system)
