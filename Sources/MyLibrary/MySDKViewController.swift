@@ -69,8 +69,9 @@ public class MySDKViewController: UIViewController {
     }
     
     
-    public func setText(_ text: String) {
+    public func setText(_ text: String, textColor: UIColor = .black) {
         label.text = text
+        label.textColor = textColor
         print("text is \(text)")
     }
     
