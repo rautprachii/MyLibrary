@@ -7,7 +7,7 @@ public class MySDKViewController: UIViewController {
     public var onDataReturn: ((String) -> Void)?
     public var onClose: (() -> Void)?
   //  var initialData: String?
-
+    @IBOutlet weak var sdkLabel: UILabel!
 
     
     private let textView: UITextView = {
@@ -18,12 +18,6 @@ public class MySDKViewController: UIViewController {
            return textView
        }()
   
-    
-    public static func printText(_ text: String) {
-            print("Text from application: \(text)")
-        }
-    
-   
 //    convenience init(initialData: String?) {
 //           self.init(nibName: "MySDKViewController", bundle: nil)
 //           self.initialData = initialData
@@ -62,6 +56,8 @@ public class MySDKViewController: UIViewController {
                    goBackButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 20)
                ])
         
+        
+      
        
 //        
 //        goBackButton.translatesAutoresizingMaskIntoConstraints = false
@@ -72,10 +68,20 @@ public class MySDKViewController: UIViewController {
                  
                
     }
+    
+    
+    public func setText(_ text: String) {
+        sdkLabel.text = text
+    }
+    
+//    public static func printText(_ text: String) {
+//            print("Text from application: \(text)")
+//        }
+    
 
     @objc private func goBackButtonTapped() {
         onDataReturn?("Hello World")
-        onClose?() 
+        onClose?()
         dismiss(animated: true, completion: nil)
     }
     
