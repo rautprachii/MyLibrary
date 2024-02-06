@@ -27,9 +27,8 @@ public class MySDKViewController: UIViewController {
    
     public override func viewDidLoad() {
         super.viewDidLoad()
-        print("text is\(textView.text)")
 //        textView.text = initialData
-        
+        setText(textView.text)
         view.backgroundColor = .white
 
         let goBackButton = UIButton(type: .system)
@@ -72,7 +71,7 @@ public class MySDKViewController: UIViewController {
     
     public func setText(_ text: String) {
         textView.text = text
-        print(text)
+        print("text is\(text)")
     }
     
 //    public static func printText(_ text: String) {
