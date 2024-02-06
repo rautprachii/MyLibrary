@@ -10,12 +10,12 @@ public class MySDKViewController: UIViewController {
     
 
     
-    private let textView: UITextView = {
-           let textView = UITextView()
-        textView.backgroundColor = .yellow
-           textView.translatesAutoresizingMaskIntoConstraints = false
-           textView.isEditable = false
-           return textView
+    private let label: UILabel = {
+           let label = UILabel()
+        label.backgroundColor = .yellow
+        label.translatesAutoresizingMaskIntoConstraints = false
+      //  label.isEditable = false
+           return label
        }()
   
 //    convenience init(initialData: String?) {
@@ -28,12 +28,6 @@ public class MySDKViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 //        textView.text = initialData
-        setText(textView.text)
-        
-         func setText(_ text: String) {
-            textView.text = text
-            print("text is\(text)")
-        }
         
         view.backgroundColor = .white
 
@@ -43,22 +37,22 @@ public class MySDKViewController: UIViewController {
 
 
        
-                view.addSubview(textView)
+                view.addSubview(label)
                 view.addSubview(goBackButton)
         
       
                NSLayoutConstraint.activate([
-                   textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-                   textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-                   textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-                   textView.heightAnchor.constraint(equalToConstant: 100)
+                label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+                label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+                label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+                label.heightAnchor.constraint(equalToConstant: 100)
                ])
         
        
                goBackButton.translatesAutoresizingMaskIntoConstraints = false
                NSLayoutConstraint.activate([
                    goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                   goBackButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 20)
+                   goBackButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20)
                ])
         
         
@@ -76,8 +70,8 @@ public class MySDKViewController: UIViewController {
     
     
     public func setText(_ text: String) {
-        textView.text = text
-        print("text is\(text)")
+        label.text = text
+        print("text is \(text)")
     }
     
 //    public static func printText(_ text: String) {
@@ -96,7 +90,7 @@ public class MySDKViewController: UIViewController {
     public func updateDataLabel(withData data: String) {
         // Update label with received data
        // dataLabel.text = data
-        textView.text = data
+        label.text = data
         print(data)
     }
     
