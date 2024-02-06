@@ -6,7 +6,7 @@ public class MySDKViewController: UIViewController {
 
     public var onDataReturn: ((String) -> Void)?
     public var onClose: (() -> Void)?
-    var initialData: String?
+  //  var initialData: String?
 
 
     
@@ -20,17 +20,17 @@ public class MySDKViewController: UIViewController {
   
     
    
-    convenience init(initialData: String?) {
-           self.init(nibName: "MySDKViewController", bundle: nil)
-           self.initialData = initialData
-       }
+//    convenience init(initialData: String?) {
+//           self.init(nibName: "MySDKViewController", bundle: nil)
+//           self.initialData = initialData
+//       }
     
     
    
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        textView.text = initialData
+//        textView.text = initialData
         
         view.backgroundColor = .white
 
