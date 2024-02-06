@@ -96,19 +96,19 @@ public class MySDKViewController: UIViewController {
 
     @objc private func goBackButtonTapped() {
         let textToPass = MySDKViewController.shared.getText()
-           onDataReturn?(textToPass)
+           onDataReturn?("Hello World")
         onClose?()
         dismiss(animated: true, completion: nil)
     }
     
     
 
-    public func updateDataLabel(withData data: String) {
-        // Update label with received data
-       // dataLabel.text = data
-        label.text = data
-        print(data)
-    }
+//    public func updateDataLabel(withData data: String) {
+//        // Update label with received data
+//       // dataLabel.text = data
+//        label.text = data
+//        print(data)
+//    }
     
 //    func handleDataReturn(data: String) {
 //           onDataReturn?(data)
