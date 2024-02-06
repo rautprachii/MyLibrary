@@ -71,7 +71,7 @@ public class MySDKViewController: UIViewController {
 
     @objc private func goBackButtonTapped() {
         onDataReturn?("Hello World")
-        onClose?() // Notify the host application upon dismissal
+        onClose?() 
         dismiss(animated: true, completion: nil)
     }
     

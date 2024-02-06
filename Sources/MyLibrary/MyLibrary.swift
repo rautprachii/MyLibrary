@@ -3,6 +3,15 @@
 import UIKit
 
 public class MyLibrary {
+    
+    
+//    var text = "Hello world"
+//    
+//    public func HelloToYou() -> String{
+//        return "helloToYou"
+//    }
+    
+    
   
     public static let shared = MyLibrary()
     
