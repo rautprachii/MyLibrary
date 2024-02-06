@@ -12,7 +12,7 @@ public class MySDKViewController: UIViewController {
     
     private let textView: UITextView = {
            let textView = UITextView()
-        textView.backgroundColor = .white
+        textView.backgroundColor = .yellow
            textView.translatesAutoresizingMaskIntoConstraints = false
            textView.isEditable = false
            return textView
@@ -27,7 +27,7 @@ public class MySDKViewController: UIViewController {
    
     public override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("text is\(textView.text)")
 //        textView.text = initialData
         
         view.backgroundColor = .white
@@ -71,7 +71,6 @@ public class MySDKViewController: UIViewController {
     
     
     public func setText(_ text: String) {
-        textView.attributedText = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         textView.text = text
         print(text)
     }
