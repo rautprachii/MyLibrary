@@ -152,8 +152,8 @@ public class MySDKViewController: UIViewController {
            request.addValue("7c4eb152d1587afa9e9062a1cf9afe54", forHTTPHeaderField: "signature-value")
 
            let params: [String: Any] = [
-               "mobile_no": "9665494024",
-               "email_id": "ajinkyamandavkar92@gmail.com"
+               "mobile_no": "7822922745",
+               "email_id": "prachir@fermion.in"
            ]
 
            do {
