@@ -1,6 +1,7 @@
 // MySDKViewController.swift
 
 import UIKit
+import Alamofire
 
 public class MySDKViewController: UIViewController {
 
@@ -133,7 +134,42 @@ public class MySDKViewController: UIViewController {
 //        ]
     
  
-   
+    public class MyAPIClient {
+        public static func sendOTP(
+            mobileNumber: String,
+            emailID: String,
+            completion: @escaping (Result<String, Error>) -> Void
+        ) {
+            let apiUrl = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
+
+            let headers: HTTPHeaders = [
+                "content-type": "application/json",
+                "request-type": "app",
+                "signature-value": "7c4eb152d1587afa9e9062a1cf9afe54"
+            ]
+
+            let parameters: [String: Any] = [
+                "mobile_no": mobileNumber,
+                "email_id": emailID
+            ]
+
+            AF.request(apiUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .validate()
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let data):
+                        if let json = data as? [String: Any], let message = json["message"] as? String {
+                            completion(.success(message))
+                        } else {
+                            completion(.failure(NSError(domain: "MyAPIClient", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid JSON format"])))
+                        }
+
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+        }
+    }
    
     
 }
