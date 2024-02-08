@@ -151,11 +151,16 @@ public class MySDKViewController: UIViewController {
                           switch response.result {
                           case .success(let value):
                               if let json = value as? [String: Any] {
-                                  // Handle successful response
                                   print("API Response: \(json)")
+                                  
+                                  if let message = json["msg"] as? String {
+                                      self.onDataReturn?(message)
+                                      print("msg is \(message)")
+                                      
+                                  }
                               }
                           case .failure(let error):
-                              // Handle error
+                            
                               print("API Error: \(error.localizedDescription)")
                           }
                       }
