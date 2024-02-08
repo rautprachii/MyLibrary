@@ -146,23 +146,19 @@ public class MySDKViewController: UIViewController {
                "email_id": emailID
            ]
 
-           AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-               .responseJSON { response in
-                   switch response.result {
-                   case .success(let value):
-                       if let json = value as? [String: Any] {
-                           print("API Response: \(json)")
-                           if let message = json["msg"] as? String {
-                       
-                              // self.onDataReturn?(message)
-                        print("msg is \(message)")
-                                
-                           }
-              }
-                   case .failure(let error):
-                       print("API Error: \(error.localizedDescription)")
-                   }
-               }
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                      .responseJSON { response in
+                          switch response.result {
+                          case .success(let value):
+                              if let json = value as? [String: Any] {
+                                  // Handle successful response
+                                  print("API Response: \(json)")
+                              }
+                          case .failure(let error):
+                              // Handle error
+                              print("API Error: \(error.localizedDescription)")
+                          }
+                      }
        }
     
     
