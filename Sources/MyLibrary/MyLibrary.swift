@@ -57,7 +57,7 @@ public class MyLibrary {
                 toastLabel.heightAnchor.constraint(equalToConstant: 40)
             ])
 
-            UIView.animate(withDuration: 2.0, delay: 0.1, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 2.0, delay: 0.0, options: .curveEaseOut, animations: {
                 toastLabel.alpha = 0.0
             }, completion: { _ in
                 toastLabel.removeFromSuperview()
