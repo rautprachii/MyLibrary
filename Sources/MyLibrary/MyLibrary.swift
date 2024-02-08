@@ -36,7 +36,7 @@ public class MyLibrary {
         print("SDK closed")
     }
 
-     func showToast(message: String) {
+    public func showToast(message: String) {
         let toastLabel = UILabel()
         toastLabel.text = message
         toastLabel.textColor = .white
