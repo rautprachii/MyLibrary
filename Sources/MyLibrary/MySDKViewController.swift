@@ -102,11 +102,11 @@ public class MySDKViewController: UIViewController {
 //        dismiss(animated: true, completion: nil)
         
         
-//        let textToPass = MySDKViewController.shared.getText()
-//            let updatedText = textToPass + " World" 
-//            onDataReturn?(updatedText)
-//            onClose?()
-//            dismiss(animated: true, completion: nil)
+        let textToPass = MySDKViewController.shared.getText()
+            let updatedText = textToPass + " World" 
+            onDataReturn?(updatedText)
+            onClose?()
+            dismiss(animated: true, completion: nil)
         
     }
     
@@ -121,9 +121,9 @@ public class MySDKViewController: UIViewController {
     
     
     
-//    func handleDataReturn(data: String) {
-//           onDataReturn?(data)
-//       }
+    func handleDataReturn(data: String) {
+           onDataReturn?(data)
+       }
     
 //    
 //    public func handleAPIResponse(response: [String: Any]) {
@@ -154,7 +154,7 @@ public class MySDKViewController: UIViewController {
                            print("API Response: \(json)")
                            if let message = json["msg"] as? String {
                        
-                               self.onDataReturn?(message)
+                              // self.onDataReturn?(message)
                         print("msg is \(message)")
                                 
                            }
