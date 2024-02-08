@@ -134,56 +134,6 @@ public class MySDKViewController: UIViewController {
     
  
    
-    func sendOTP(mobileNumber: String, email: String, completion: @escaping (Result<String, Error>) -> Void) {
-            let apiUrl = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
-            
-            guard let url = URL(string: apiUrl) else {
-                completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
-                return
-            }
-            
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            let params: [String: Any] = [
-                "mobile_no": mobileNumber,
-                "email_id": email
-                // Add any other parameters as needed
-            ]
-            
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: params)
-            } catch {
-                completion(.failure(error))
-                return
-            }
-            
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let data = data else {
-                    completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
-                    return
-                }
-                
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                    if let msg = json?["msg"] as? String {
-                        completion(.success(msg))
-                    } else {
-                        completion(.failure(NSError(domain: "Invalid JSON format", code: 0, userInfo: nil)))
-                    }
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-            
-            task.resume()
-        }
    
     
 }
