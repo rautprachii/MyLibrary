@@ -153,10 +153,10 @@ public class MySDKViewController: UIViewController {
                        if let json = value as? [String: Any] {
                            print("API Response: \(json)")
                            if let message = json["msg"] as? String {
-                               DispatchQueue.main.async {
-                        self.onDataReturn?(message)
+                       
+                               self.onDataReturn?(message)
                         print("msg is \(message)")
-                                }
+                                
                            }
               }
                    case .failure(let error):
