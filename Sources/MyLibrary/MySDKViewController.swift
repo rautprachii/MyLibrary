@@ -102,11 +102,11 @@ public class MySDKViewController: UIViewController {
 //        dismiss(animated: true, completion: nil)
         
         
-        let textToPass = MySDKViewController.shared.getText()
-            let updatedText = textToPass + " World" 
-            onDataReturn?(updatedText)
-            onClose?()
-            dismiss(animated: true, completion: nil)
+//        let textToPass = MySDKViewController.shared.getText()
+//            let updatedText = textToPass + " World" 
+//            onDataReturn?(updatedText)
+//            onClose?()
+//            dismiss(animated: true, completion: nil)
         
     }
     
@@ -146,15 +146,13 @@ public class MySDKViewController: UIViewController {
                    case .success(let value):
                        if let json = value as? [String: Any] {
                            print("API Response: \(json)")
-                         
-                           var responseData: String?
-                           if let data = json["data"] as? String {
-                            responseData = data
-                                }
-                           if let responseData = responseData {
-                                                   MySDKViewController.shared.onDataReturn?(responseData)
-                                               }
-                       }
+                           
+                           if let message = json["message"] as? String {
+                         print("API Response Message: \(message)")
+                            }
+              }
+                       
+                       
                    case .failure(let error):
                        print("API Error: \(error.localizedDescription)")
                    }
