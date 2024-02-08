@@ -146,7 +146,14 @@ public class MySDKViewController: UIViewController {
                    case .success(let value):
                        if let json = value as? [String: Any] {
                            print("API Response: \(json)")
-                          
+                         
+                           var responseData: String?
+                           if let data = json["data"] as? String {
+                            responseData = data
+                                }
+                           if let responseData = responseData {
+                                                   MySDKViewController.shared.onDataReturn?(responseData)
+                                               }
                        }
                    case .failure(let error):
                        print("API Error: \(error.localizedDescription)")
