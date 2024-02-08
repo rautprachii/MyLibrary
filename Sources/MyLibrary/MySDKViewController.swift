@@ -125,6 +125,12 @@ public class MySDKViewController: UIViewController {
 //           onDataReturn?(data)
 //       }
     
+//    
+//    public func handleAPIResponse(response: [String: Any]) {
+//            if let message = response["msg"] as? String {
+//                onDataReturn?(message)
+//            }
+//    
     
     public func sendOTPRequest(mobileNumber: String, emailID: String) {
            let url = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
@@ -146,13 +152,11 @@ public class MySDKViewController: UIViewController {
                    case .success(let value):
                        if let json = value as? [String: Any] {
                            print("API Response: \(json)")
-                           
-                           if let message = json["message"] as? String {
-                         print("API Response Message: \(message)")
-                            }
+                           if let message = json["msg"] as? String {
+                               self.onDataReturn?(message)
+                               print("msg is \(message)")
+                           }
               }
-                       
-                       
                    case .failure(let error):
                        print("API Error: \(error.localizedDescription)")
                    }
