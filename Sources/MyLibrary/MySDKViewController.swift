@@ -100,7 +100,6 @@ public class MySDKViewController: UIViewController {
 //        onClose?()
 //        dismiss(animated: true, completion: nil)
         
-        sendOTP()
         
         let textToPass = MySDKViewController.shared.getText()
             let updatedText = textToPass + " World" 
@@ -141,61 +140,55 @@ public class MySDKViewController: UIViewController {
 //        }
 //    }
     
-    // Function to send OTP
-       public func sendOTP() {
-           let url = URL(string: "https://uatselfonboarding.utkarsh.bank/app/send-otp")!
+ 
+    func sendOTP() {
+        // API Endpoint
+        let apiURL = URL(string: "https://uatselfonboarding.utkarsh.bank/app/send-otp")!
 
-           var request = URLRequest(url: url)
-           request.httpMethod = "POST"
-           request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-           request.addValue("app", forHTTPHeaderField: "request-type")
-           request.addValue("7c4eb152d1587afa9e9062a1cf9afe54", forHTTPHeaderField: "signature-value")
+        // Request Headers
+        var request = URLRequest(url: apiURL)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("app", forHTTPHeaderField: "request-type")
+        request.addValue("7c4eb152d1587afa9e9062a1cf9afe54", forHTTPHeaderField: "signature-value")
 
-           let params: [String: Any] = [
-               "mobile_no": "7822922745",
-               "email_id": "prachir@fermion.in"
-           ]
+        // Request Parameters
+        let params: [String: Any] = [
+            "mobile_no": 7822922745,
+            "email_id": "rprachi9797@gmail.com"
+        ]
 
-           do {
-               request.httpBody = try JSONSerialization.data(withJSONObject: params)
-           } catch {
-               print("Error encoding request body: \(error)")
-               return
-           }
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: params)
+        } catch {
+            print("Error serializing JSON: \(error)")
+            return
+        }
 
-           let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-               if let error = error {
-                   print("Error making API request: \(error)")
-                   return
-               }
+        // Make the API Call
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            }
 
-               guard let data = data else {
-                   print("No data received")
-                   return
-               }
+            if let data = data {
+                // Process the response data if needed
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print("Response JSON: \(json)")
+                } catch {
+                    print("Error parsing JSON: \(error)")
+                }
+            }
+        }
 
-               do {
-                   let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+        task.resume()
+    }
 
-                   if let ack = json?["ack"] as? String, ack == "success" {
-                       print("API request successful")
-                       if let msg = json?["msg"] as? String {
-                           print("Response message: \(msg)")
-                           // Pass the response back to the application
-                           self.onDataReturn?(msg)
-                       }
-                   } else {
-                       print("API request failed")
-                   }
-               } catch {
-                   print("Error parsing JSON response: \(error)")
-               }
-           }
-
-           task.resume()
-       }
 
     
+   
     
 }
 
