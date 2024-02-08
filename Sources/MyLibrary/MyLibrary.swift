@@ -28,6 +28,7 @@ public class MyLibrary {
     private func handleDataFromSDK(_ data: String) {
         print("Data received in application: \(data)")
         showToast(message: data)
+        
     }
 
     
