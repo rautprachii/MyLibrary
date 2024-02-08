@@ -132,7 +132,7 @@ public class MySDKViewController: UIViewController {
 //            }
 //    
     
-    public func sendOTPRequest(mobileNumber: String, emailID: String, onDataReturn: @escaping (String) -> Void) {
+    public func sendOTPRequest(mobileNumber: String, emailID: String) {
            let url = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
 
            let headers: HTTPHeaders = [
