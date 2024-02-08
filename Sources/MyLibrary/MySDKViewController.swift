@@ -123,77 +123,67 @@ public class MySDKViewController: UIViewController {
 //       }
     
     
-//    func getVerification(){
+//    func VerificationApi(){
 //        let url = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
 //      
 //        let param : Parameters = [
 //            
-//            "mobile_no:": 9665494024,
-//            "rating": "ajinkyamandavkar92@gmail.com",
+//            "mobile_no:": mobileNo,
+//            "rating": "emailId",
 //        ]
-//     
-//        ApiHelper.requestPOSTURL(url, params: param as [String : AnyObject], headers: nil, success: { (responseSucess) in
-//            print(responseSucess)
-//            
-//        }) { (responseFailure) in
-//            print(responseFailure)
-//        }
-//    }
     
  
-    
-    public func makeAPICall(withMobile mobileNo: String, emailId: String, completion: @escaping (Result<String, Error>) -> Void) {
-            let url = URL(string: "https://uatselfonboarding.utkarsh.bank/app/send-otp")!
-
-            // Request headers
+   
+    func sendOTP(mobileNumber: String, email: String, completion: @escaping (Result<String, Error>) -> Void) {
+            let apiUrl = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
+            
+            guard let url = URL(string: apiUrl) else {
+                completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+                return
+            }
+            
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("app", forHTTPHeaderField: "request-type")
-            request.addValue("7c4eb152d1587afa9e9062a1cf9afe54", forHTTPHeaderField: "signature-value")
-
-            // Request parameters
-            let parameters: [String: Any] = [
-                "mobile_no": mobileNo,
-                "email_id": emailId
+            
+            let params: [String: Any] = [
+                "mobile_no": mobileNumber,
+                "email_id": email
+                // Add any other parameters as needed
             ]
-
+            
             do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+                request.httpBody = try JSONSerialization.data(withJSONObject: params)
             } catch {
                 completion(.failure(error))
                 return
             }
-
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     completion(.failure(error))
                     return
                 }
-
+                
                 guard let data = data else {
-                    let error = NSError(domain: "Invalid response", code: 0, userInfo: nil)
-                    completion(.failure(error))
+                    completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
                     return
                 }
-
+                
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                    if let message = json?["message"] as? String {
-                        completion(.success(message))
+                    if let msg = json?["msg"] as? String {
+                        completion(.success(msg))
                     } else {
-                        let error = NSError(domain: "Invalid response", code: 0, userInfo: nil)
-                        completion(.failure(error))
+                        completion(.failure(NSError(domain: "Invalid JSON format", code: 0, userInfo: nil)))
                     }
                 } catch {
                     completion(.failure(error))
                 }
             }
-
+            
             task.resume()
         }
-
-    
    
     
 }
