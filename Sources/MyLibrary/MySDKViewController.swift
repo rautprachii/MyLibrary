@@ -132,7 +132,7 @@ public class MySDKViewController: UIViewController {
 //            }
 //    
     
-    public func sendOTPRequest(mobileNumber: String, emailID: String) {
+    public func sendOTPRequest(mobileNumber: String, emailID: String, onDataReturn: @escaping (String) -> Void) {
            let url = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
 
            let headers: HTTPHeaders = [
@@ -153,8 +153,10 @@ public class MySDKViewController: UIViewController {
                        if let json = value as? [String: Any] {
                            print("API Response: \(json)")
                            if let message = json["msg"] as? String {
-                               self.onDataReturn?(message)
-                               print("msg is \(message)")
+                               DispatchQueue.main.async {
+                        self.onDataReturn?(message)
+                        print("msg is \(message)")
+                                }
                            }
               }
                    case .failure(let error):

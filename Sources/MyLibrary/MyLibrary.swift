@@ -17,7 +17,7 @@ public class MyLibrary {
         let sdkViewController = MySDKViewController.shared
         sdkViewController.setText(data) // Set the data in the SDK
         sdkViewController.onDataReturn = { [weak self] receivedData in
-            self?.handleDataFromSDK(receivedData)
+          //  self?.handleDataFromSDK(receivedData)
         }
         sdkViewController.onClose = { [weak self] in
             self?.handleSDKClosure()
@@ -26,11 +26,11 @@ public class MyLibrary {
     }
 
     // Show toast message in the application
-    private func handleDataFromSDK(_ data: String) {
-        print("Data received in application: \(data)")
-        showToast(message: data)
-        
-    }
+//    private func handleDataFromSDK(_ data: String) {
+//        print("Data received in application: \(data)")
+//        showToast(message: data)
+//        
+//    }
 
     
     private func handleSDKClosure() {
