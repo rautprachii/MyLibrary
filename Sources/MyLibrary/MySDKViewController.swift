@@ -125,47 +125,7 @@ public class MySDKViewController: UIViewController {
            onDataReturn?(data)
        }
     
-//    
-//    public func handleAPIResponse(response: [String: Any]) {
-//            if let message = response["msg"] as? String {
-//                onDataReturn?(message)
-//            }
-//    
-    
-//    public func sendOTPRequest(mobileNumber: String, emailID: String) {
-//           let url = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
-//
-//           let headers: HTTPHeaders = [
-//               "Content-Type": "application/json",
-//               "Request-Type": "app",
-//               "Signature-Value": "7c4eb152d1587afa9e9062a1cf9afe54"
-//           ]
-//
-//           let parameters: [String: Any] = [
-//               "mobile_no": mobileNumber,
-//               "email_id": emailID
-//           ]
-//
-//        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-//                      .responseJSON { response in
-//                          switch response.result {
-//                          case .success(let value):
-//                              if let json = value as? [String: Any] {
-//                                  print("API Response: \(json)")
-//                                  
-//                                  if let message = json["msg"] as? String {
-//                                      self.onDataReturn?(message)
-//                                      print("msg is \(message)")
-//                                      
-//                                  }
-//                              }
-//                          case .failure(let error):
-//                            
-//                              print("API Error: \(error.localizedDescription)")
-//                          }
-//                      }
-//       }
-    
+
     
     public func sendOTPRequest(mobileNumber: String, emailID: String, completion: @escaping (Result<String, Error>) -> Void) {
         let url = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
