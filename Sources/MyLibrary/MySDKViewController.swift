@@ -134,7 +134,7 @@ public class MySDKViewController: UIViewController {
 //        ]
     
  
-    public class MyAPIClient {
+    
         public static func sendOTP(
             mobileNumber: String,
             emailID: String,
@@ -169,7 +169,7 @@ public class MySDKViewController: UIViewController {
                     }
                 }
         }
-    }
+    
    
     
 }
