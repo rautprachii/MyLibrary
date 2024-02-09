@@ -198,8 +198,9 @@ public class MySDKViewController: UIViewController {
                     if let json = value as? [String: Any] {
                         print("API Response: \(json)")
                         
-                        if let message = json["msg"] as? String {
-                            print("verification OTP is\(message)")
+                        if let verificationMessage = json["msg"] as? String {
+                            completion(.success(verificationMessage))
+                            print("verification OTP is\(verificationMessage)")
                           //  self.handleVerificationResponse(message: message)
                         }
                     }
