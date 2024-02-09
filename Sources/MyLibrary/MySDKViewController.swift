@@ -172,7 +172,7 @@ public class MySDKViewController: UIViewController {
     
     
     
-    public func verifyOTPRequest(otp: String, emailOTP: String, consent: String, mobileNumber: String, emailID:String, latitude: String, longitude: String) {
+    public func verifyOTPRequest(otp: String, emailOTP: String, consent: String, mobileNumber: String, emailID:String, latitude: String, longitude: String, completion: @escaping (Result<String, Error>) -> Void) {
         let url = "https://uatselfonboarding.utkarsh.bank/app/verify-otp"
         
         let headers: HTTPHeaders = [
