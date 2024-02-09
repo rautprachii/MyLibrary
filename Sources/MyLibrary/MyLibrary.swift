@@ -32,6 +32,10 @@ public class MyLibrary {
         
     }
 
+    public func verifyOTP(from verificationOTPViewController: UIViewController, otp: String, emailOTP: String, consent: String, mobileNumber: String, emailID: String, latitude: String, longitude: String) {
+           let sdkViewController = MySDKViewController.shared
+           sdkViewController.verifyOTPRequest(otp: otp, emailOTP: emailOTP, consent: consent, mobileNumber: mobileNumber, emailID: emailID, latitude: latitude, longitude: longitude)
+       }
     
     private func handleSDKClosure() {
         print("SDK closed")
