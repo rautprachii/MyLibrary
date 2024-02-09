@@ -19,7 +19,8 @@ public class MySDKViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    
+ 
+  //  let viewModel = OTPViewModel()
     
     //    private let label: UILabel = {
     //           let label = UILabel()
@@ -74,6 +75,20 @@ public class MySDKViewController: UIViewController {
         //        goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         //        goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         //
+        
+        
+//        viewModel.sendOTP(mobileNumber: "7822922745", emailID: "rprachi9797@gmail.com") { result in
+//                   switch result {
+//                   case .success(let message):
+//                       
+//                       print("Success: \(message)")
+//                   case .failure(let error):
+//
+//                       print("Error: \(error.localizedDescription)")
+//                   }
+//               }
+        
+        
     }
     
     
