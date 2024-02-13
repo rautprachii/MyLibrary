@@ -17,12 +17,17 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.5.0"),
+        .package(url: "https://github.com/firebase/firebase-ios-sdk.git", from: "9.0.0"),
         // Add other dependencies if needed
     ],
     targets: [
         .target(
             name: "MyLibrary",
-            dependencies: ["Alamofire"]),
+            dependencies: [
+                "Alamofire",
+                .product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"),
+            ]),
+        
         .testTarget(
             name: "MyLibraryTests",
             dependencies: ["MyLibrary"]),

@@ -1,6 +1,8 @@
 // MyLibrary.swift
 
 import UIKit
+import FirebaseAnalytics
+import FirebaseCore
 
 
 public class MyLibrary {
@@ -11,6 +13,15 @@ public class MyLibrary {
     private init() {}
 
     public var onDataReturn: ((String) -> Void)?
+    
+    // initialixe firebase
+    public func initializeFirebaseAnalytics() {
+           FirebaseApp.configure()
+       }
+    
+    public func logEventToFirebase(eventName: String, parameters: [String: Any]?) {
+           Analytics.logEvent(eventName, parameters: parameters)
+       }
 
     // Present the SDK view controller with initial data
     public func presentSDK(from viewController: UIViewController, withData data: String) {

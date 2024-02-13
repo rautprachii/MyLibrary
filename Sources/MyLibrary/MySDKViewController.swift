@@ -1,7 +1,7 @@
 // MySDKViewController.swift
 
 import UIKit
-import Alamofire 
+import Alamofire
 
 public class MySDKViewController: UIViewController {
     
@@ -20,7 +20,7 @@ public class MySDKViewController: UIViewController {
         return label
     }()
  
-  //  let viewModel = OTPViewModel()
+   // let viewModel = OTPViewModel()
     
     //    private let label: UILabel = {
     //           let label = UILabel()
@@ -75,19 +75,6 @@ public class MySDKViewController: UIViewController {
         //        goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         //        goBackButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         //
-        
-        
-//        viewModel.sendOTP(mobileNumber: "7822922745", emailID: "rprachi9797@gmail.com") { result in
-//                   switch result {
-//                   case .success(let message):
-//                       
-//                       print("Success: \(message)")
-//                   case .failure(let error):
-//
-//                       print("Error: \(error.localizedDescription)")
-//                   }
-//               }
-        
         
     }
     
@@ -216,12 +203,11 @@ public class MySDKViewController: UIViewController {
                         if let verificationMessage = json["msg"] as? String {
                             completion(.success(verificationMessage))
                             print("verification OTP is\(verificationMessage)")
-                          //  self.handleVerificationResponse(message: message)
                         }
                     }
                 case .failure(let error):
                     print("API Error: \(error.localizedDescription)")
-                    // Handle failure
+                   
                 }
             }
         
