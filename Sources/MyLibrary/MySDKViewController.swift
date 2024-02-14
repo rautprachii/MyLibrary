@@ -66,10 +66,6 @@ public class MySDKViewController: UIViewController {
             goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             goBackButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20)
         ])
-        
-        
-        
-        
         //
         //        goBackButton.translatesAutoresizingMaskIntoConstraints = false
         //        goBackButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -81,7 +77,7 @@ public class MySDKViewController: UIViewController {
     
     
     public func setText(_ text: String, textColor: UIColor = .black) {
-        labelText = text // Store the text value
+        labelText = text
         label.text = text
         label.textColor = textColor
         print("text is \(text)")
@@ -128,7 +124,7 @@ public class MySDKViewController: UIViewController {
     }
     
     
-    
+    //Send OTP Api
     public func sendOTPRequest(mobileNumber: String, emailID: String, completion: @escaping (Result<String, Error>) -> Void) {
         let url = "https://uatselfonboarding.utkarsh.bank/app/send-otp"
         
@@ -155,6 +151,8 @@ public class MySDKViewController: UIViewController {
                         if let message = json["msg"] as? String {
                             completion(.success(message))
                             print("msg is \(message)")
+                          
+                            MyLibrary.shared.logEventToFirebase(eventName: "otp_sent", parameters: parameters)
                         }
                     }
                 case .failure(let error):
@@ -164,16 +162,9 @@ public class MySDKViewController: UIViewController {
             }
     }
     
+
     
-    
-    //    func verifyOTP(){
-    //
-    //    }
-    
-    
-    
-    
-    
+    //Verify OTP Api
     public func verifyOTPRequest(otp: String, emailOTP: String, consent: String, mobileNumber: String, emailID:String, latitude: String, longitude: String, completion: @escaping (Result<String, Error>) -> Void) {
         let url = "https://uatselfonboarding.utkarsh.bank/app/verify-otp"
         
@@ -205,18 +196,13 @@ public class MySDKViewController: UIViewController {
                             print("verification OTP is\(verificationMessage)")
                             
                             
-                                                    MyLibrary.shared.logEventToFirebase(eventName: "otp_verification_success", parameters: nil)
+                            MyLibrary.shared.logEventToFirebase(eventName: "otp_verification", parameters: parameters)
                             
                             print("verification OTP is \(verificationMessage)")
-                                
-                            
-                            
                         }
                     }
                 case .failure(let error):
                     print("API Error: \(error.localizedDescription)")
-                    
-                    MyLibrary.shared.logEventToFirebase(eventName: "otp_verification_failure", parameters: nil)
                    
                     completion(.failure(error))
                 }
