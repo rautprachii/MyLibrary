@@ -195,8 +195,8 @@ public class MySDKViewController: UIViewController {
                             completion(.success(verificationMessage))
                             print("verification OTP is\(verificationMessage)")
                             
-                            
-                            MyLibrary.shared.logEventToFirebase(eventName: "otp_verification", parameters: parameters)
+                      
+                           // MyLibrary.shared.logEventToFirebase(eventName: "otp_verification", parameters: parameters)
                             
                             print("verification OTP is \(verificationMessage)")
                         }
