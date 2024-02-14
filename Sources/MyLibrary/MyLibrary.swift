@@ -21,6 +21,7 @@ public class MyLibrary {
     
     public func logEventToFirebase(eventName: String, parameters: [String: Any]?) {
            Analytics.logEvent(eventName, parameters: parameters)
+        print(Analytics.logEvent(eventName, parameters: parameters))
        }
 
     // Present the SDK view controller with initial data

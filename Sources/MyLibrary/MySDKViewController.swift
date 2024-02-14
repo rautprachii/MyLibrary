@@ -203,11 +203,22 @@ public class MySDKViewController: UIViewController {
                         if let verificationMessage = json["msg"] as? String {
                             completion(.success(verificationMessage))
                             print("verification OTP is\(verificationMessage)")
+                            
+                            
+                                                    MyLibrary.shared.logEventToFirebase(eventName: "otp_verification_success", parameters: nil)
+                            
+                            print("verification OTP is \(verificationMessage)")
+                                
+                            
+                            
                         }
                     }
                 case .failure(let error):
                     print("API Error: \(error.localizedDescription)")
+                    
+                    MyLibrary.shared.logEventToFirebase(eventName: "otp_verification_failure", parameters: nil)
                    
+                    completion(.failure(error))
                 }
             }
         
